@@ -157,9 +157,8 @@
 
   */
 
-  # only for vmware
-  # be sure to comment this
-  virtualisation.vmware.guest.enable = true;
+  # only for vmware, be sure to comment this
+  #virtualisation.vmware.guest.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
