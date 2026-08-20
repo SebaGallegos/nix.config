@@ -10,7 +10,7 @@
 
     # helium browser
     helium = {
-      url = "github:schembriaiden/helium-browser-nix-flake";
+      url = "github:oxcl/nix-flake-helium-browser";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -19,6 +19,7 @@
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
         modules = [
           ./hardware-configuration.nix
           ./configuration.nix
