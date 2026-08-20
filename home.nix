@@ -5,9 +5,9 @@
   home.homeDirectory = "/home/sebastian";
 
   imports = [
-    ./modules/user.config/cursor.pointer.nix
-    ./modules/user.config/git.config.nix
-    ./modules/user.config/starship.nix
+    ./modules/nix.user.config/cursor.pointer.nix
+    ./modules/nix.user.config/git.config.nix
+    ./modules/nix.user.config/starship.nix
   ];
 
   home.stateVersion = "26.05";
@@ -32,13 +32,18 @@
     EDITOR = "kate";
   };
 
+  xdg.configFile."fastfetch/mini.jsonc".source = ./modules/config.files/fastfetch/mini.jsonc;
+
   programs.bash = {
     enable = true;
+    initExtra = ''
+      fastfetch --config mini
+    '';
     shellAliases = {
-      # para hacer una nueva generación
+      # to make a new generation
       sys-update = "sudo nixos-rebuild switch --flake ~/.dotfiles#nixos";
 
-      # para limpiar todo y actualizar systemd-boot
+      # to wipe all generations and update systemd-boot
       sys-clean = "echo 'Warning: This wipes all old generations.' && read -p 'Press Enter to continue or Ctrl+C to cancel...' && sudo nix-collect-garbage -d && sudo nixos-rebuild boot --flake ~/.dotfiles#nixos";
 
       # to edit dotfiles, uses $EDITOR session variable
