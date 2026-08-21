@@ -27,7 +27,7 @@
   home.sessionVariables = {
     # Session variable to open files/directories
     # Make sure to:
-    # 1. Ensure the program is installed previously (declaredin home.packages, for example)
+    # 1. Ensure the program is installed (declared in home.packages, for example)
     # 2. for better compatibility, use an editor with folder/directory support (avoid nano)
     EDITOR = "kate";
   };

@@ -3,19 +3,26 @@
 {
   programs.git = {
     enable = true;
-    userName = "Sebastián Gallegos F.";
-    userEmail = "59512190+SebaGallegos@users.noreply.github.com";
+
+    settings = {
+      user = {
+        name = "Sebastián Gallegos F.";
+        email = "59512190+SebaGallegos@users.noreply.github.com";
+      };
+      init = {
+        defaultBranch = "main";
+      };
+    };
+
     signing = {
       key = "8437B33B817FE464";
       signByDefault = true;
-    };
-    extraConfig = {
-      init.defaultBranch = "main";
     };
   };
 
   programs.ssh = {
     enable = true;
+    enableDefaultConfig = false;
   };
 
   programs.gpg = {
@@ -25,6 +32,6 @@
   services.gpg-agent = {
     enable = true;
     enableSshSupport = true;
-    pinentryPackage = pkgs.pinentry-qt;
+    pinentry.package = pkgs.pinentry-qt;
   };
 }
